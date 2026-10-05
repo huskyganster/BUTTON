@@ -15,7 +15,8 @@ body {
   text-align: center;
 }
 
-/* OLD WINDOWS BUTTON */
+
+/* BUTTON */
 
 button {
   font-family: "MS Sans Serif", Arial, sans-serif;
@@ -41,7 +42,8 @@ button:active {
   border-bottom: 2px solid white;
 }
 
-/* CLICK COUNTER */
+
+/* COUNTER */
 
 #counterText {
   margin-top: 15px;
@@ -57,7 +59,8 @@ button:active {
   opacity: 1;
 }
 
-/* IMAGE ITEM */
+
+/* BALDI SHOP ITEM */
 
 #itemContainer {
   position: relative;
@@ -84,19 +87,20 @@ button:active {
   cursor: pointer;
 }
 
-/* PRICE HOVER BOX */
+
+/* HOVER TEXT */
 
 .price {
   position: absolute;
 
   left: 50%;
-  bottom: -35px;
+  bottom: -42px;
 
   transform: translateX(-50%);
 
   white-space: nowrap;
 
-  padding: 5px 8px;
+  padding: 6px 9px;
 
   background: #ffffcc;
   color: black;
@@ -111,4 +115,33 @@ button:active {
 
 #itemContainer:hover .price {
   opacity: 1;
+}
+
+
+/* DANCING GIF */
+
+#danceContainer {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.8s ease;
+
+  z-index: 100;
+}
+
+#danceContainer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#danceGif {
+  width: 300px;
+  height: auto;
 }
