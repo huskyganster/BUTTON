@@ -1,10 +1,13 @@
 body {
   margin: 0;
   height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   background: #c0c0c0;
+
   font-family: "MS Sans Serif", Arial, sans-serif;
 }
 
@@ -12,9 +15,12 @@ body {
   text-align: center;
 }
 
+/* OLD WINDOWS BUTTON */
+
 button {
   font-family: "MS Sans Serif", Arial, sans-serif;
   font-size: 16px;
+
   padding: 8px 22px;
 
   background: #c0c0c0;
@@ -35,13 +41,74 @@ button:active {
   border-bottom: 2px solid white;
 }
 
+/* CLICK COUNTER */
+
 #counterText {
   margin-top: 15px;
+
   opacity: 0;
+
   font-size: 16px;
+
   transition: opacity 0.5s ease;
 }
 
 #counterText.show {
+  opacity: 1;
+}
+
+/* IMAGE ITEM */
+
+#itemContainer {
+  position: relative;
+
+  width: fit-content;
+
+  margin: 20px auto 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 1s ease;
+}
+
+#itemContainer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#baldiImage {
+  width: 70px;
+  height: auto;
+
+  cursor: pointer;
+}
+
+/* PRICE HOVER BOX */
+
+.price {
+  position: absolute;
+
+  left: 50%;
+  bottom: -35px;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  padding: 5px 8px;
+
+  background: #ffffcc;
+  color: black;
+
+  border: 1px solid black;
+
+  font-size: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+#itemContainer:hover .price {
   opacity: 1;
 }
