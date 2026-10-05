@@ -5,49 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Button</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #c0c0c0;
-    }
-
-    button {
-      font-family: "MS Sans Serif", Arial, sans-serif;
-      font-size: 16px;
-      padding: 8px 22px;
-
-      background: #c0c0c0;
-      color: black;
-
-      border-top: 2px solid white;
-      border-left: 2px solid white;
-      border-right: 2px solid #404040;
-      border-bottom: 2px solid #404040;
-
-      cursor: pointer;
-    }
-
-    button:active {
-      border-top: 2px solid #404040;
-      border-left: 2px solid #404040;
-      border-right: 2px solid white;
-      border-bottom: 2px solid white;
-
-      padding-top: 9px;
-      padding-left: 23px;
-      padding-bottom: 7px;
-      padding-right: 21px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <button>Button</button>
+  <div class="container">
+    <button id="clickButton">Button</button>
 
+    <div id="counterText">
+      you just clicked it 0 times!
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
