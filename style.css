@@ -1,34 +1,45 @@
 body {
   margin: 0;
+  width: 100vw;
   height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   background: #c0c0c0;
 
   font-family: "MS Sans Serif", Arial, sans-serif;
+
+  overflow: hidden;
 }
 
-.container {
+
+/* CENTER BUTTON */
+
+.main {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
   text-align: center;
 }
 
 
-/* BUTTON */
+/* OLD WINDOWS BUTTON */
 
 button {
   font-family: "MS Sans Serif", Arial, sans-serif;
+
   font-size: 16px;
 
-  padding: 8px 22px;
+  padding: 8px 28px;
 
   background: #c0c0c0;
   color: black;
 
   border-top: 2px solid white;
   border-left: 2px solid white;
+
   border-right: 2px solid #404040;
   border-bottom: 2px solid #404040;
 
@@ -38,19 +49,20 @@ button {
 button:active {
   border-top: 2px solid #404040;
   border-left: 2px solid #404040;
+
   border-right: 2px solid white;
   border-bottom: 2px solid white;
 }
 
 
-/* COUNTER */
+/* CLICK COUNTER */
 
 #counterText {
   margin-top: 15px;
 
-  opacity: 0;
-
   font-size: 16px;
+
+  opacity: 0;
 
   transition: opacity 0.5s ease;
 }
@@ -60,19 +72,24 @@ button:active {
 }
 
 
-/* BALDI SHOP ITEM */
+/* BALDI SIDE ITEM */
 
 #itemContainer {
-  position: relative;
+  position: fixed;
 
-  width: fit-content;
+  right: 30px;
+  top: 50%;
 
-  margin: 20px auto 0;
+  transform: translateY(-50%);
+
+  text-align: center;
 
   opacity: 0;
   visibility: hidden;
 
   transition: opacity 1s ease;
+
+  z-index: 10;
 }
 
 #itemContainer.show {
@@ -80,9 +97,16 @@ button:active {
   visibility: visible;
 }
 
+
+/* BALDI IMAGE */
+
 #baldiImage {
-  width: 70px;
+  display: block;
+
+  width: 80px;
   height: auto;
+
+  margin: auto;
 
   cursor: pointer;
 }
@@ -93,14 +117,14 @@ button:active {
 .price {
   position: absolute;
 
-  left: 50%;
-  bottom: -42px;
+  right: 90px;
+  top: 50%;
 
-  transform: translateX(-50%);
+  transform: translateY(-50%);
 
-  white-space: nowrap;
+  width: 190px;
 
-  padding: 6px 9px;
+  padding: 8px;
 
   background: #ffffcc;
   color: black;
@@ -110,6 +134,7 @@ button:active {
   font-size: 12px;
 
   opacity: 0;
+
   pointer-events: none;
 }
 
@@ -118,22 +143,20 @@ button:active {
 }
 
 
-/* DANCING GIF */
+/* DANCE GIF */
 
 #danceContainer {
   position: fixed;
 
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
+  left: 30px;
+  bottom: 30px;
 
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.6s ease;
 
-  z-index: 100;
+  z-index: 20;
 }
 
 #danceContainer.show {
@@ -142,6 +165,6 @@ button:active {
 }
 
 #danceGif {
-  width: 300px;
+  width: 220px;
   height: auto;
 }
