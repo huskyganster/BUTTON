@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button</title>
 
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+    }
+
+    button {
+      padding: 18px 36px;
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      background: black;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="myButton">Click Me</button>
+
+  <script>
+    const button = document.getElementById("myButton");
+
+    button.addEventListener("click", () => {
+      button.textContent = "Clicked!";
+    });
+  </script>
+
+</body>
+</html>
