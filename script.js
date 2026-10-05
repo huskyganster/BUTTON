@@ -2,13 +2,21 @@ let clicks = 0;
 let dancing = false;
 
 const button = document.getElementById("clickButton");
-const counterText = document.getElementById("counterText");
 
-const itemContainer = document.getElementById("itemContainer");
-const baldiImage = document.getElementById("baldiImage");
+const counterText =
+  document.getElementById("counterText");
 
-const danceContainer = document.getElementById("danceContainer");
-const danceGif = document.getElementById("danceGif");
+const itemContainer =
+  document.getElementById("itemContainer");
+
+const baldiImage =
+  document.getElementById("baldiImage");
+
+const danceContainer =
+  document.getElementById("danceContainer");
+
+const danceGif =
+  document.getElementById("danceGif");
 
 
 function updateCounter() {
@@ -19,7 +27,7 @@ function updateCounter() {
   counterText.classList.add("show");
 
 
-  // Unlock Baldi at 10 clicks
+  // Baldi appears after 10 clicks
   if (clicks >= 10) {
     itemContainer.classList.add("show");
   }
@@ -38,17 +46,15 @@ button.addEventListener("click", function () {
 });
 
 
-/* CLICK BALDI */
+/* BALDI SHOP CLICK */
 
 baldiImage.addEventListener("click", function () {
 
-  // Stop user from starting multiple GIFs
   if (dancing) {
     return;
   }
 
 
-  // Need 25 clicks
   if (clicks < 25) {
     return;
   }
@@ -57,51 +63,40 @@ baldiImage.addEventListener("click", function () {
   dancing = true;
 
 
-  // Pay 25 clicks
+  // Take 25 clicks
   clicks -= 25;
 
   updateCounter();
 
 
-  /*
-    Reload the GIF every time.
-
-    Adding ?time= makes the browser treat it
-    like a fresh GIF so it starts from frame 1.
-  */
-
+  // Force GIF to restart
   danceGif.src =
-    "baldidancing.gif?time=" + new Date().getTime();
+    "baldidancing.gif?v=" + Date.now();
 
 
-  // Fade GIF in
+  // Show GIF on LEFT side
   danceContainer.classList.add("show");
 
 
-  /*
-    GIF plays for 13 seconds
-  */
-
+  // Play for 13 seconds
   setTimeout(function () {
 
-    // Fade GIF out
     danceContainer.classList.remove("show");
 
 
-    // Reward player
+    // Reward
     clicks += 10;
 
     updateCounter();
 
 
-    // Allow another purchase
-    dancing = false;
-
-
-    // Stop/remove GIF
     setTimeout(function () {
+
       danceGif.src = "";
-    }, 800);
+
+      dancing = false;
+
+    }, 600);
 
 
   }, 13000);
