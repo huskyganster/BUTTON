@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Button</title>
 
   <style>
@@ -12,36 +12,42 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: white;
+      background: #c0c0c0;
     }
 
     button {
-      padding: 18px 36px;
-      font-size: 24px;
+      font-family: "MS Sans Serif", Arial, sans-serif;
+      font-size: 16px;
+      padding: 8px 22px;
+
+      background: #c0c0c0;
+      color: black;
+
+      border-top: 2px solid white;
+      border-left: 2px solid white;
+      border-right: 2px solid #404040;
+      border-bottom: 2px solid #404040;
+
       cursor: pointer;
-      border: none;
-      border-radius: 12px;
-      background: black;
-      color: white;
     }
 
     button:active {
-      transform: scale(0.95);
+      border-top: 2px solid #404040;
+      border-left: 2px solid #404040;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+
+      padding-top: 9px;
+      padding-left: 23px;
+      padding-bottom: 7px;
+      padding-right: 21px;
     }
   </style>
 </head>
 
 <body>
 
-  <button id="myButton">Click Me</button>
-
-  <script>
-    const button = document.getElementById("myButton");
-
-    button.addEventListener("click", () => {
-      button.textContent = "Clicked!";
-    });
-  </script>
+  <button>Button</button>
 
 </body>
 </html>
