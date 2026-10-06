@@ -3,24 +3,19 @@ body {
   width: 100vw;
   height: 100vh;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: #c0c0c0;
 
   font-family: "MS Sans Serif", Arial, sans-serif;
-
-  overflow: hidden;
 }
 
 
-/* MAIN AREA */
+/* EVERYTHING STAYS CENTERED */
 
 .main {
-  position: fixed;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-
   text-align: center;
 }
 
@@ -38,7 +33,6 @@ button {
 
   border-top: 2px solid white;
   border-left: 2px solid white;
-
   border-right: 2px solid #404040;
   border-bottom: 2px solid #404040;
 
@@ -48,13 +42,12 @@ button {
 button:active {
   border-top: 2px solid #404040;
   border-left: 2px solid #404040;
-
   border-right: 2px solid white;
   border-bottom: 2px solid white;
 }
 
 
-/* CLICK COUNTER */
+/* CLICK TEXT */
 
 #counterText {
   margin-top: 15px;
@@ -63,7 +56,7 @@ button:active {
 
   opacity: 0;
 
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
 #counterText.show {
@@ -71,23 +64,22 @@ button:active {
 }
 
 
-/* BALDI ITEM */
+/* BALDI SHOP */
 
-#itemContainer {
-  position: absolute;
+#baldiShop {
+  position: relative;
 
-  left: 50%;
-  top: 75px;
+  margin: 18px auto 0;
 
-  transform: translateX(-50%);
+  width: fit-content;
 
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity 1s ease;
+  transition: opacity 0.8s ease;
 }
 
-#itemContainer.show {
+#baldiShop.show {
   opacity: 1;
   visibility: visible;
 }
@@ -96,28 +88,28 @@ button:active {
 /* BALDI IMAGE */
 
 #baldiImage {
+  display: block;
+
   width: 70px;
   height: auto;
-
-  display: block;
 
   cursor: pointer;
 }
 
 
-/* BALDI HOVER TEXT */
+/* HOVER PRICE */
 
 .price {
   position: absolute;
 
   left: 50%;
-  top: 80px;
+  top: 78px;
 
   transform: translateX(-50%);
 
-  width: 210px;
+  width: 220px;
 
-  padding: 6px;
+  padding: 6px 8px;
 
   background: #ffffcc;
   color: black;
@@ -129,35 +121,32 @@ button:active {
   opacity: 0;
 
   pointer-events: none;
+
+  z-index: 10;
 }
 
-#itemContainer:hover .price {
+#baldiShop:hover .price {
   opacity: 1;
 }
 
 
 /* DANCING GIF */
 
-#danceContainer {
-  position: fixed;
-
-  left: 30px;
-  bottom: 30px;
+#danceArea {
+  margin-top: 20px;
 
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity 0.6s ease;
-
-  z-index: 100;
+  transition: opacity 0.8s ease;
 }
 
-#danceContainer.show {
+#danceArea.show {
   opacity: 1;
   visibility: visible;
 }
 
 #danceGif {
-  width: 220px;
+  width: 180px;
   height: auto;
 }
