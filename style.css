@@ -1,15 +1,26 @@
 let clicks = 0;
 
-let autoClickerUnlocked = false;
-let autoClickerInterval = null;
+let baldiBought = false;
+let autoClicker = null;
 
-const button = document.getElementById("clickButton");
-const counterText = document.getElementById("counterText");
 
-const baldiShop = document.getElementById("baldiShop");
-const baldiImage = document.getElementById("baldiImage");
+const button =
+  document.getElementById("clickButton");
 
-const danceArea = document.getElementById("danceArea");
+const counterText =
+  document.getElementById("counterText");
+
+const baldiShop =
+  document.getElementById("baldiShop");
+
+const baldiImage =
+  document.getElementById("baldiImage");
+
+const danceArea =
+  document.getElementById("danceArea");
+
+const danceGif =
+  document.getElementById("danceGif");
 
 
 function updateCounter() {
@@ -20,15 +31,25 @@ function updateCounter() {
   counterText.classList.add("show");
 
 
-  // Show Baldi once user reaches 10 clicks
-  if (clicks >= 10 && !autoClickerUnlocked) {
+  /*
+    BALDI ONLY APPEARS
+    ONCE PLAYER HAS 25 CLICKS
+  */
+
+  if (clicks >= 25 && baldiBought === false) {
+
     baldiShop.classList.add("show");
+
+  } else if (clicks < 25 && baldiBought === false) {
+
+    baldiShop.classList.remove("show");
+
   }
 
 }
 
 
-/* MAIN BUTTON */
+/* NORMAL BUTTON */
 
 button.addEventListener("click", function () {
 
@@ -39,40 +60,57 @@ button.addEventListener("click", function () {
 });
 
 
-/* BUY BALDI AUTO CLICKER */
+/* BUY BALDI */
 
 baldiImage.addEventListener("click", function () {
 
-  // Already bought
-  if (autoClickerUnlocked) {
+  if (baldiBought === true) {
     return;
   }
 
 
-  // Need 25 clicks
   if (clicks < 25) {
     return;
   }
 
 
-  // Pay 25 clicks
+  /* PAY */
+
   clicks -= 25;
 
-  autoClickerUnlocked = true;
+  baldiBought = true;
+
 
   updateCounter();
 
 
-  // Hide shop Baldi
+  /* REMOVE SHOP IMAGE */
+
   baldiShop.classList.remove("show");
 
 
-  // Show dancing GIF forever
+  /*
+    ONLY NOW LOAD THE GIF
+
+    This prevents it from playing
+    before the user buys it.
+  */
+
+  danceGif.src =
+    "baldidancing.gif?v=" + Date.now();
+
+
   danceArea.classList.add("show");
 
 
-  // Give 10 clicks every 13 seconds
-  autoClickerInterval = setInterval(function () {
+  /*
+    GIF LENGTH = 13 SECONDS
+
+    Every time another 13 seconds passes,
+    the player gets 10 clicks.
+  */
+
+  autoClicker = setInterval(function () {
 
     clicks += 10;
 
