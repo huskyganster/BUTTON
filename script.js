@@ -1,107 +1,163 @@
-let clicks = 0;
-let dancing = false;
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
 
-const button = document.getElementById("clickButton");
+  background: #c0c0c0;
 
-const counterText =
-  document.getElementById("counterText");
+  font-family: "MS Sans Serif", Arial, sans-serif;
 
-const itemContainer =
-  document.getElementById("itemContainer");
-
-const baldiImage =
-  document.getElementById("baldiImage");
-
-const danceContainer =
-  document.getElementById("danceContainer");
-
-const danceGif =
-  document.getElementById("danceGif");
-
-
-function updateCounter() {
-
-  counterText.textContent =
-    `you just clicked it ${clicks} times!`;
-
-  counterText.classList.add("show");
-
-
-  // Baldi appears after 10 clicks
-  if (clicks >= 10) {
-    itemContainer.classList.add("show");
-  }
-
+  overflow: hidden;
 }
 
 
-/* MAIN BUTTON */
+/* MAIN AREA */
 
-button.addEventListener("click", function () {
+.main {
+  position: fixed;
 
-  clicks++;
+  left: 50%;
+  top: 50%;
 
-  updateCounter();
+  transform: translate(-50%, -50%);
 
-});
-
-
-/* BALDI SHOP CLICK */
-
-baldiImage.addEventListener("click", function () {
-
-  if (dancing) {
-    return;
-  }
+  text-align: center;
+}
 
 
-  if (clicks < 25) {
-    return;
-  }
+/* OLD WINDOWS BUTTON */
+
+button {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 16px;
+
+  padding: 8px 28px;
+
+  background: #c0c0c0;
+  color: black;
+
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+
+  cursor: pointer;
+}
+
+button:active {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
 
 
-  dancing = true;
+/* CLICK COUNTER */
+
+#counterText {
+  margin-top: 15px;
+
+  font-size: 16px;
+
+  opacity: 0;
+
+  transition: opacity 0.5s ease;
+}
+
+#counterText.show {
+  opacity: 1;
+}
 
 
-  // Take 25 clicks
-  clicks -= 25;
+/* BALDI ITEM */
 
-  updateCounter();
+#itemContainer {
+  position: absolute;
 
+  left: 50%;
+  top: 75px;
 
-  // Force GIF to restart
-  danceGif.src =
-    "baldidancing.gif?v=" + Date.now();
+  transform: translateX(-50%);
 
+  opacity: 0;
+  visibility: hidden;
 
-  // Show GIF on LEFT side
-  danceContainer.classList.add("show");
+  transition: opacity 1s ease;
+}
 
-
-  // Play for 13 seconds
-  setTimeout(function () {
-
-    danceContainer.classList.remove("show");
-
-
-    // Reward
-    clicks += 10;
-
-    updateCounter();
+#itemContainer.show {
+  opacity: 1;
+  visibility: visible;
+}
 
 
-    setTimeout(function () {
+/* BALDI IMAGE */
 
-      danceGif.src = "";
+#baldiImage {
+  width: 70px;
+  height: auto;
 
-      dancing = false;
+  display: block;
 
-    }, 600);
-
-
-  }, 13000);
-
-});
+  cursor: pointer;
+}
 
 
-updateCounter();
+/* BALDI HOVER TEXT */
+
+.price {
+  position: absolute;
+
+  left: 50%;
+  top: 80px;
+
+  transform: translateX(-50%);
+
+  width: 210px;
+
+  padding: 6px;
+
+  background: #ffffcc;
+  color: black;
+
+  border: 1px solid black;
+
+  font-size: 12px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+#itemContainer:hover .price {
+  opacity: 1;
+}
+
+
+/* DANCING GIF */
+
+#danceContainer {
+  position: fixed;
+
+  left: 30px;
+  bottom: 30px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.6s ease;
+
+  z-index: 100;
+}
+
+#danceContainer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#danceGif {
+  width: 220px;
+  height: auto;
+}
