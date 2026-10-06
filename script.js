@@ -12,15 +12,12 @@ body {
   font-family: "MS Sans Serif", Arial, sans-serif;
 }
 
-
-/* EVERYTHING STAYS CENTERED */
-
 .main {
   text-align: center;
 }
 
 
-/* OLD WINDOWS BUTTON */
+/* WINDOWS BUTTON */
 
 button {
   font-family: "MS Sans Serif", Arial, sans-serif;
@@ -47,7 +44,7 @@ button:active {
 }
 
 
-/* CLICK TEXT */
+/* COUNTER */
 
 #counterText {
   margin-top: 15px;
@@ -66,38 +63,40 @@ button:active {
 
 /* BALDI SHOP */
 
-#baldiShop {
-  position: relative;
+/* COMPLETELY HIDDEN AT FIRST */
 
-  margin: 18px auto 0;
+#baldiShop {
+  display: none;
+
+  position: relative;
 
   width: fit-content;
 
-  opacity: 0;
-  visibility: hidden;
+  margin: 18px auto 0;
 
-  transition: opacity 0.8s ease;
+  opacity: 0;
 }
 
 #baldiShop.show {
-  opacity: 1;
-  visibility: visible;
+  display: block;
+
+  animation: fadeIn 0.8s forwards;
 }
 
 
 /* BALDI IMAGE */
 
 #baldiImage {
-  display: block;
-
   width: 70px;
   height: auto;
+
+  display: block;
 
   cursor: pointer;
 }
 
 
-/* HOVER PRICE */
+/* PRICE */
 
 .price {
   position: absolute;
@@ -107,7 +106,7 @@ button:active {
 
   transform: translateX(-50%);
 
-  width: 220px;
+  width: 225px;
 
   padding: 6px 8px;
 
@@ -122,7 +121,7 @@ button:active {
 
   pointer-events: none;
 
-  z-index: 10;
+  z-index: 20;
 }
 
 #baldiShop:hover .price {
@@ -132,21 +131,42 @@ button:active {
 
 /* DANCING GIF */
 
+/* COMPLETELY HIDDEN UNTIL PURCHASE */
+
 #danceArea {
-  margin-top: 20px;
+  display: none;
+
+  margin-top: 18px;
 
   opacity: 0;
-  visibility: hidden;
-
-  transition: opacity 0.8s ease;
 }
 
 #danceArea.show {
-  opacity: 1;
-  visibility: visible;
+  display: block;
+
+  animation: fadeIn 0.8s forwards;
 }
 
 #danceGif {
   width: 180px;
   height: auto;
+
+  display: block;
+
+  margin: auto;
+}
+
+
+/* FADE */
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
 }
