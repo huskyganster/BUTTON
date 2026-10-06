@@ -1,20 +1,15 @@
 let clicks = 0;
-let dancing = false;
+
+let autoClickerUnlocked = false;
+let autoClickerInterval = null;
 
 const button = document.getElementById("clickButton");
 const counterText = document.getElementById("counterText");
 
-const itemContainer =
-  document.getElementById("itemContainer");
+const baldiShop = document.getElementById("baldiShop");
+const baldiImage = document.getElementById("baldiImage");
 
-const baldiImage =
-  document.getElementById("baldiImage");
-
-const danceContainer =
-  document.getElementById("danceContainer");
-
-const danceGif =
-  document.getElementById("danceGif");
+const danceArea = document.getElementById("danceArea");
 
 
 function updateCounter() {
@@ -25,9 +20,9 @@ function updateCounter() {
   counterText.classList.add("show");
 
 
-  // Unlock Baldi at 10 clicks
-  if (clicks >= 10) {
-    itemContainer.classList.add("show");
+  // Show Baldi once user reaches 10 clicks
+  if (clicks >= 10 && !autoClickerUnlocked) {
+    baldiShop.classList.add("show");
   }
 
 }
@@ -44,55 +39,44 @@ button.addEventListener("click", function () {
 });
 
 
-/* CLICK BALDI */
+/* BUY BALDI AUTO CLICKER */
 
 baldiImage.addEventListener("click", function () {
 
-  if (dancing) {
+  // Already bought
+  if (autoClickerUnlocked) {
     return;
   }
 
+
+  // Need 25 clicks
   if (clicks < 25) {
     return;
   }
 
 
-  dancing = true;
-
-
-  // Cost
+  // Pay 25 clicks
   clicks -= 25;
+
+  autoClickerUnlocked = true;
 
   updateCounter();
 
 
-  // Restart GIF from beginning
-  danceGif.src =
-    "baldidancing.gif?v=" + Date.now();
+  // Hide shop Baldi
+  baldiShop.classList.remove("show");
 
 
-  danceContainer.classList.add("show");
+  // Show dancing GIF forever
+  danceArea.classList.add("show");
 
 
-  // Play for 13 seconds
-  setTimeout(function () {
+  // Give 10 clicks every 13 seconds
+  autoClickerInterval = setInterval(function () {
 
-    danceContainer.classList.remove("show");
-
-
-    // Give 10 clicks
     clicks += 10;
 
     updateCounter();
-
-
-    setTimeout(function () {
-
-      danceGif.src = "";
-      dancing = false;
-
-    }, 600);
-
 
   }, 13000);
 
